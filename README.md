@@ -12,6 +12,6 @@ cd server
 
 - Run this command:
 ```bash
-reba3 release
+rebar3 release
 ```
  
