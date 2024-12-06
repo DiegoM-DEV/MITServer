@@ -1,5 +1,5 @@
 {application, server, [
-    {description, "An OTP application"},
+    {description, "Server TCP/IP"},
     {vsn, "0.1.0"},
     {registered, []},
     {mod, {server_app, []}},
@@ -8,7 +8,7 @@
         stdlib
     ]},
     {env, []},
-    {modules, []},
+    {modules, [server_app,server_sup,server_tcp]},
     {licenses, ["Apache-2.0"]},
     {links, []}
  ]}.
