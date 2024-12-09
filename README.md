@@ -14,6 +14,7 @@ cd server
 ```bash
 rebar3 release
 ```
+
  
 ## Client
 Simple TCP client in Python 
@@ -36,3 +37,17 @@ The client tries to connect to the server. If the connection is accepted, the se
 
 ### Command
 - "EXIT" to close the connection.
+- /create-room<br>
+  Create a room and return a `room name`, where the room's ID is random.
+- /list-rooms<br>
+  Return a list of all available rooms.
+- /destroy-room<br>
+  Destroy a specified room, the server asks the client which room to destroy.
+- /join-room<br>
+  Join a specified room, the server asks the client which room to join.
+- /leave-room<br>
+  Leave a room, the server asks the client which room to leave.
+- /send-message<br>
+  Send message to all members of the room. Firts, the server asks the client which room thay want to send a message to. Then, it asks which message they want to send.
+
+**Warning**: Because of the limited time available, not all errors have been handled. Please pay attention when entering the room name in the commands.
