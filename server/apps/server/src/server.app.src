@@ -8,7 +8,7 @@
         stdlib
     ]},
     {env, []},
-    {modules, [server_app,server_sup,server_tcp]},
+    {modules, [server_app,server_sup,server_tcp, room_manager]},
     {licenses, ["Apache-2.0"]},
     {links, []}
  ]}.

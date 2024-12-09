@@ -26,7 +26,14 @@ init([]) ->
         restart => permanent,                 
         shutdown => brutal_kill,              
         type => worker,                       
-        modules => [server_tcp]} 
+        modules => [server_tcp]},
+
+        #{id => room_manager,                    
+        start => {room_manager, start_link, []}, 
+        restart => permanent,                 
+        shutdown => brutal_kill,              
+        type => worker,                       
+        modules => [room_manager]}
     ],
     {ok, {SupFlags, ChildSpecs}}.
 
