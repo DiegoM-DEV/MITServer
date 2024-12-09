@@ -76,6 +76,12 @@ receive_message(Socket, ClientName, Rooms) ->
                         {restart_receive_message} ->
                             receive_message(Socket, ClientName, Rooms)
                     end;
+                Message == "/send-private-message" ->
+                    gen_server:cast(server_tcp, {message_received, {Socket,ClientName, self()}, Message}),
+                    receive
+                        {restart_receive_message} ->
+                            receive_message(Socket, ClientName, Rooms)
+                    end;
                 true ->
                     gen_server:cast(server_tcp, {message_received, {Socket,ClientName, self()}, Message}),  
                     receive_message(Socket, ClientName, Rooms)  

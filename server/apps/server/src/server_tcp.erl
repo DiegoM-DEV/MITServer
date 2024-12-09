@@ -147,7 +147,20 @@ handle_cast({message_received, {Socket, ClientName, ClientPID}, Message}, State)
                         ok, Members),
                         ClientPID ! {restart_receive_message}
             end;
-        _ ->
+        "/send-private-message" ->
+            ClientMap = get_client_map(State),
+            ClientMapWithoutItself = maps:remove(ClientName, ClientMap),
+            MessageResponse = io_lib:format("Choose who to send a message to:~p ~n", [maps:keys(ClientMapWithoutItself)]),
+            server_response(Socket, list_to_binary(MessageResponse)),
+            {ok, ClientToSend} = gen_tcp:recv(Socket, 0),
+            MessageResponseWrite = io_lib:format("Write message to ~p ~n", [binary_to_list(ClientToSend)]),
+            server_response(Socket, list_to_binary(MessageResponseWrite)),
+            {ok, MessageToSend} = gen_tcp:recv(Socket, 0),
+            {PID, SocketClient} = maps:get(binary_to_list(ClientToSend), ClientMapWithoutItself),
+            MessageFrom = io_lib:format("From ~p: ~p~n", [ClientName, binary_to_list(MessageToSend)]),
+            gen_tcp:send(SocketClient, list_to_binary(MessageFrom)),
+            ClientPID ! {restart_receive_message};
+         _ ->
             io:format("Command not found~n"), 
             server_response(Socket, <<"Command not found">>)
     end,
