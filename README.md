@@ -48,6 +48,8 @@ The client tries to connect to the server. If the connection is accepted, the se
 - /leave-room<br>
   Leave a room, the server asks the client which room to leave.
 - /send-message<br>
-  Send message to all members of the room. Firts, the server asks the client which room thay want to send a message to. Then, it asks which message they want to send.
-
+  Send message to all members of the room. First, the server asks the client which room thay want to send a message to. Then, it asks which message they want to send.
+- /send-private-message<br>
+  Send a private message to a single user. First, the server asks the client which client they want to send the message to. Then, it asks which message they want to send.<br>
+  
 **Warning**: Because of the limited time available, not all errors have been handled. Please pay attention when entering the room name in the commands.
