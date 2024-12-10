@@ -15,9 +15,9 @@ cd server
 rebar3 release
 ```
 
- 
+
 ## Client
-Simple TCP client in Python 
+Simple TCP client in Python
 - Move into the client folder:
 ```bash
 cd client
@@ -30,7 +30,7 @@ python client.py
 ```bash
 python3 client.py
 ```
-When the client starts, it'll ask you an ID and which will be lebeled as `Client ID`. 
+When the client starts, it'll ask you an ID and which will be lebeled as `Client ID`.
 
 The client tries to connect to the server. If the connection is accepted, the server prints `Client ID`, Client's `IP Address` and `Port`. The server returns a `Welcome + Client ID` message to the client.
 
@@ -51,5 +51,19 @@ The client tries to connect to the server. If the connection is accepted, the se
   Send message to all members of the room. First, the server asks the client which room thay want to send a message to. Then, it asks which message they want to send.
 - /send-private-message<br>
   Send a private message to a single user. First, the server asks the client which client they want to send the message to. Then, it asks which message they want to send.<br>
-  
+
 **Warning**: Because of the limited time available, not all errors have been handled. Please pay attention when entering the room name in the commands.
+
+## Terraform
+The script creates an EC2 instance of type `t3.micro` (available with the free tier). Uou need to provide the `access_key` and ` secret_key` of a user with ` AdministratorAccess` permission.
+
+Run:
+ ```bash
+terraform init
+```
+```bash
+terraform plan
+```
+```bash
+terraform apply
+```
