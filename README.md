@@ -55,7 +55,8 @@ The client tries to connect to the server. If the connection is accepted, the se
 **Warning**: Because of the limited time available, not all errors have been handled. Please pay attention when entering the room name in the commands.
 
 ## Terraform
-The script creates an EC2 instance of type `t3.micro` (available with the free tier). Uou need to provide the `access_key` and ` secret_key` of a user with ` AdministratorAccess` permission.
+The script creates an EC2 instance of type `t3.micro` (available with the free tier). You need to provide the `access_key` and ` secret_key` of a user with ` AdministratorAccess` permission.
+The script creates three tables on DynamoDB to handle persistence `RoomTable`, `PrivateRoomTable` and `MessageTable`.
 
 Run:
  ```bash
